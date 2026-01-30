@@ -39,7 +39,6 @@
             font-weight: 800;
         }
 
-        /* Main Hero Box */
         .hero-box {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -52,31 +51,21 @@
             box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
         }
 
-        .hero-box p {
-            font-size: 1.5rem;
-            color: var(--text-main);
-            margin-bottom: 10px;
-        }
+        .hero-box p { font-size: 1.5rem; color: var(--text-main); margin-bottom: 10px; }
+        .hero-box span { color: var(--text-dim); font-size: 0.9rem; }
 
-        .hero-box span {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        /* Grid Layout - The fix for side-by-side cards */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* Product Cards */
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem 2rem;
+            padding: 2.5rem 1.2rem;
             border-radius: 16px;
             text-align: center;
             transition: all 0.3s ease;
@@ -94,7 +83,7 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .card i {
+        .card i.main-icon {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
@@ -102,65 +91,32 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        .card h3 { font-size: 1.3rem; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+        .card .subtitle { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2rem; min-height: 40px; }
 
-        .card .subtitle {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            display: block;
-        }
-
-        /* Buttons */
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            width: 100%;
-        }
+        .btn-group { display: flex; gap: 6px; width: 100%; }
 
         .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 10px 4px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             font-weight: 700;
             transition: 0.3s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
             flex: 1;
             justify-content: center;
-        }
-
-        .btn-download {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.2);
+            white-space: nowrap;
+            border: 1px solid rgba(255,255,255,0.1);
             color: var(--text-main);
-        }
-
-        .btn-download:hover {
-            background: var(--accent-blue);
-            color: var(--accent-blue);
-        }
-
-        .btn-tutorial {
             background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: var(--text-main);
         }
 
-        .btn-tutorial:hover {
-            background: var(--accent-blue);
-            color: var(--accent-blue);
-        }
+        .btn:hover { background: var(--accent-blue); border-color: var(--accent-blue); color: #000; }
+        .btn-git:hover { background: var(--accent-purple); border-color: var(--accent-purple); color: #fff; }
 
-        /* Top Glow Accent on Cards */
         .card::before {
             content: '';
             position: absolute;
@@ -169,8 +125,8 @@
         }
 
         @media (max-width: 768px) {
-            .header h1 { font-size: 2.5rem; }
-            body { padding: 1rem; }
+            .btn-group { flex-direction: column; }
+            .btn { padding: 12px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -181,80 +137,81 @@
     </div>
 
     <section class="hero-box">
-        <p>Complexity, simplified. Powerful for streamlined workflows.</p>
-        <span>Advanced tools designed for the next generation of digital infrastructure.</span>
+        <p>Complexity, simplified.</p>
+        <span>Direct access to the latest SIMPLITIX stable releases.</span>
     </section>
 
     <div class="grid-container">
-        
-        
 
         <div class="card">
-            <i class="fas fa-database"></i>
+            <i class="fas fa-database main-icon"></i>
             <h3>SIMPLI_SQL</h3>
             <span class="subtitle">Big Data handling & Analytics</span>
             <div class="btn-group">
-                <a href="#" class="btn btn-download"><i class="fas fa-download"></i> Download</a>
-                <a href="#" class="btn btn-tutorial"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SimpliSql/releases/download/V.1.0/Simplsql.zip" class="btn"><i class="fas fa-download"></i> Download</a>
+                <a href="https://github.com/Chandan250401/SimpliSql/releases/tag/V.1.0" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="Test.html" class="btn"><i class="fas fa-book"></i> Tutorial</a>
             </div>
         </div>
         
         <div class="card">
-            <i class="fas fa-terminal"></i>
+            <i class="fas fa-terminal main-icon"></i>
             <h3>SIMPLI_SHELL</h3>
             <span class="subtitle">Intelligent Automation through SHELL CMD</span>
             <div class="btn-group">
-                <a href="https://github.com/Chandan250401/SimpliShell/releases/download/V.1/SIMPLISHELL.ps1" class="btn btn-download" download>
-                    <i class="fas fa-download"></i> Download
-                </a>
-                <a href="docs/tutorial.html" class="btn btn-tutorial">
-                    <i class="fas fa-book"></i> Tutorial
-                </a>
+                <a href="https://github.com/Chandan250401/SimpliShell/releases/download/V.1/SIMPLISHELL_v1.txt" class="btn"><i class="fas fa-download"></i> Download</a>
+                <a href="https://github.com/Chandan250401/SimpliShell/releases/tag/V.1" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="Test.html" class="btn"><i class="fas fa-book"></i> Tutorial</a>
             </div>
         </div>
         
         <div class="card">
-            <i class="fas fa-file-invoice"></i>
+            <i class="fas fa-file-invoice main-icon"></i>
             <h3>SIMPLI_PDF</h3>
             <span class="subtitle">Offline Documents Edit Made Easy</span>
             <div class="btn-group">
-                <a href="#" class="btn btn-download"><i class="fas fa-download"></i> Download</a>
-                <a href="#" class="btn btn-tutorial"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SIMPLI_PDF/releases/download/v1.0.0/PDF.zip" class="btn"><i class="fas fa-download"></i> Download</a>
+                <a href="https://github.com/Chandan250401/SIMPLI_PDF/releases/tag/v1.0.0" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="Test.html" class="btn"><i class="fas fa-book"></i> Tutorial</a>
             </div>
         </div>
 
         <div class="card">
-            <i class="fas fa-microscope"></i>
+            <i class="fas fa-microscope main-icon"></i>
             <h3>SIMPLI_ANALYZER</h3>
             <span class="subtitle">Clean up hidden Data from system</span>
             <div class="btn-group">
-                <a href="#" class="btn btn-download"><i class="fas fa-download"></i> Download</a>
-                <a href="#" class="btn btn-tutorial"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SimpliAnalyzer/releases/download/v1.0/SimpliAnalyzer.zip" class="btn"><i class="fas fa-download"></i> Download</a>
+                <a href="https://github.com/Chandan250401/SimpliAnalyzer/releases/tag/v1.0" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="Test.html" class="btn"><i class="fas fa-book"></i> Tutorial</a>
             </div>
         </div>
 
         <div class="card">
-            <i class="fas fa-paper-plane"></i>
+            <i class="fas fa-paper-plane main-icon"></i>
             <h3>SIMPLI_MAIL</h3>
             <span class="subtitle">Gmail Handler</span>
             <div class="btn-group">
-                <a href="#" class="btn btn-download"><i class="fas fa-download"></i> Download</a>
-                <a href="#" class="btn btn-tutorial"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SimpliMail/releases/download/V.1/SimpliMail.zip" class="btn"><i class="fas fa-download"></i> Download</a>
+                <a href="https://github.com/Chandan250401/SimpliMail/releases/tag/V.1" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="Test.html" class="btn"><i class="fas fa-book"></i> Tutorial</a>
             </div>
         </div>
 
         <div class="card">
-            <i class="fas fa-chart-pie"></i>
+            <i class="fas fa-chart-pie main-icon"></i>
             <h3>SIMPLI_FIN</h3>
             <span class="subtitle">Your Schedule 3 Companion</span>
             <div class="btn-group">
-                <a href="#" class="btn btn-download"><i class="fas fa-download"></i> Download</a>
-                <a href="#" class="btn btn-tutorial"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SIMPLIFIN/releases/download/v.1/SimpliFin.zip" class="btn"><i class="fas fa-download"></i> Download</a>
+                <a href="https://github.com/Chandan250401/SIMPLIFIN/releases/tag/v.1" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="Test.html" class="btn"><i class="fas fa-book"></i> Tutorial</a>
             </div>
         </div>
 
     </div> 
-    <footer style="text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.8rem;">
+
+    <footer style="text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.8rem; padding-bottom: 2rem;">
         &copy; 2026 SIMPLITIX Ecosystem. All rights reserved.
     </footer>
 
