@@ -3,227 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIMPLITIX | Dashboard</title>
+    <title>SIMPLITIX | Premium Ecosystem</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            /* DARK MODE PALETTE */
+            --bg-dark: #020617;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --header-bg: rgba(2, 6, 23, 0.8);
             --accent-blue: #38bdf8;
-            --accent-purple: #818cf8;
+            --accent-purple: #a855f7;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --star-gold: #fbbf24;
         }
 
+        body.light-mode {
+            /* LIGHT MODE PALETTE */
+            --bg-dark: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --header-bg: rgba(241, 245, 249, 0.9);
+            --accent-blue: #0284c7;
+            --accent-purple: #7e22ce;
+            --text-main: #0f172a;
+            --text-dim: #475569;
+            --glass-border: rgba(15, 23, 42, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
         body {
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            background-color: var(--bg-dark);
             color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 2rem;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* --- COMPACT HORIZONTAL HEADER --- */
+        /* --- STICKY HEADER --- */
         .header {
-            display: flex;
-            flex-direction: row; /* Aligns logo and text side-by-side */
-            align-items: center; /* Centers items vertically */
-            justify-content: center; /* Centers the whole bar horizontally */
-            gap: 20px; /* Space between logo and text */
-            margin-bottom: 3rem;
-            padding: 10px;
-        }
-
-        .header img {
-            height: 50px; /* Compact height to match text scale */
-            width: auto;
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
-        }
-
-        .header h1 {
-            font-size: 2.8rem; /* Slightly smaller for a compact look */
-            letter-spacing: 6px;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        /* --- HERO & GRID STYLES --- */
-        .hero-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 12px;
-            max-width: 900px;
-            margin: 0 auto 3rem auto;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
-        }
-
-        .hero-box p { font-size: 1.5rem; color: var(--text-main); margin-bottom: 10px; }
-        .hero-box span { color: var(--text-dim); font-size: 0.9rem; }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem 1.2rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .card i.main-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card h3 { font-size: 1.3rem; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
-        .card .subtitle { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2rem; min-height: 40px; }
-
-        .btn-group { display: flex; gap: 6px; width: 100%; }
-
-        .btn {
-            padding: 10px 4px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 700;
-            transition: 0.3s;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 4px;
-            flex: 1;
-            justify-content: center;
-            white-space: nowrap;
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-main);
-            background: rgba(255,255,255,0.05);
+            justify-content: space-between;
+            padding: 1rem 5%;
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .btn:hover { background: var(--accent-blue); border-color: var(--accent-blue); color: #000; }
-        .btn-git:hover { background: var(--accent-purple); border-color: var(--accent-purple); color: #fff; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .header img { height: 40px; filter: drop-shadow(0 0 8px var(--accent-blue)); }
+        .header h1 { font-size: 1.8rem; letter-spacing: 4px; background: linear-gradient(to right, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
 
-        @media (max-width: 768px) {
-            .header { flex-direction: row; gap: 10px; }
-            .header h1 { font-size: 1.8rem; letter-spacing: 3px; }
-            .header img { height: 40px; }
-            .btn-group { flex-direction: column; }
-        }
+        .mode-toggle { background: var(--glass-border); border: 1px solid var(--glass-border); color: var(--text-main); padding: 8px 15px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+
+        /* --- HERO --- */
+        .hero-box { text-align: center; padding: 4rem 1rem; max-width: 800px; margin: 0 auto; }
+        .hero-box h2 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; }
+
+        /* --- GRID --- */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto 5rem; padding: 0 2rem; }
+
+        /* --- CARDS & LIVE STARS --- */
+        .card { background: var(--card-bg); border: 1px solid var(--glass-border); padding: 3rem 2rem; border-radius: 24px; text-align: center; display: flex; flex-direction: column; align-items: center; position: relative; }
+        .card:hover { transform: translateY(-12px) scale(1.03); border-color: var(--accent-blue); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); }
+
+        .repo-stars { background: rgba(251, 191, 36, 0.1); border: 1px solid var(--star-gold); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; color: var(--star-gold); display: flex; align-items: center; gap: 6px; margin-bottom: 15px; font-weight: 700; }
+        
+        .main-icon { font-size: 3.5rem; margin-bottom: 1.5rem; background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.3)); }
+        .card:hover .main-icon { filter: drop-shadow(0 0 15px var(--accent-blue)) drop-shadow(0 0 30px var(--accent-purple)); transform: scale(1.1); }
+        
+        .card h3 { font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
+        .subtitle { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 2rem; min-height: 45px; }
+
+        /* --- BUTTONS --- */
+        .btn-group { display: flex; gap: 8px; width: 100%; }
+        .btn { flex: 1; padding: 12px 5px; border-radius: 10px; text-decoration: none; font-size: 0.75rem; font-weight: 700; color: var(--text-main); background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .btn:hover { background: var(--accent-blue); color: #000; border-color: var(--accent-blue); }
+        .btn-git:hover { background: var(--accent-purple); color: #fff; border-color: var(--accent-purple); }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact-section { max-width: 900px; margin: 2rem auto 5rem; padding: 3rem 2rem; background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 24px; text-align: center; }
+        .contact-section h3 { font-size: 2rem; margin-bottom: 1.5rem; background: linear-gradient(to right, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .contact-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .contact-item { text-decoration: none; color: var(--text-main); padding: 12px 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .contact-item:hover { border-color: var(--accent-blue); background: rgba(56, 189, 248, 0.1); }
+
+        footer { padding: 4rem; text-align: center; color: var(--text-dim); border-top: 1px solid var(--glass-border); font-size: 0.85rem; }
+
+        @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } .btn-group { flex-direction: column; } }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <img src="https://raw.githubusercontent.com/Chandan250401/Simplitix.in/main/image.png" alt="Simplitix Logo"> 
-        <h1>SIMPLITIX</h1>
-    </div>
+    <header class="header">
+        <div class="header-left">
+            <img src="https://raw.githubusercontent.com/Chandan250401/Simplitix.in/main/image.png" alt="Logo"> 
+            <h1>SIMPLITIX</h1>
+        </div>
+        <button class="mode-toggle" id="modeBtn">
+            <i class="fas fa-moon"></i> <span>Dark Mode</span>
+        </button>
+    </header>
 
     <section class="hero-box">
-        <p>Complexity, simplified.</p>
-        <span>Direct access to the latest SIMPLITIX stable releases.</span>
+        <h2>Complexity, <span style="color: var(--accent-blue);">Simplified.</span></h2>
+        <p>Your premium dashboard for financial automation and data management.</p>
     </section>
 
     <div class="grid-container">
-
         <div class="card">
+            <div class="repo-stars" data-repo="Chandan250401/SimpliSql"><i class="fas fa-star"></i> <span class="star-count">0</span> Stars</div>
             <i class="fas fa-database main-icon"></i>
             <h3>SIMPLI_SQL</h3>
-            <span class="subtitle">Big Data handling & Analytics</span>
+            <span class="subtitle">Big Data handling & Predictive Analytics</span>
             <div class="btn-group">
                 <a href="https://github.com/Chandan250401/SimpliSql/releases/download/V.1.0/Simplsql.zip" class="btn"><i class="fas fa-download"></i> Download</a>
-                <a href="https://github.com/Chandan250401/SimpliSql/releases/tag/V.1.0" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
-                <a href="https://www.youtube.com/playlist?list=PLVsh1n3PGkq_fKGhutdQRJa0-8ar-nK2U" class="btn"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SimpliSql" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="https://www.youtube.com/playlist?list=PLVsh1n3PGkq_fKGhutdQRJa0-8ar-nK2U" class="btn"><i class="fas fa-play"></i> Watch</a>
             </div>
         </div>
-        
+
         <div class="card">
+            <div class="repo-stars" data-repo="Chandan250401/SimpliShell"><i class="fas fa-star"></i> <span class="star-count">0</span> Stars</div>
             <i class="fas fa-terminal main-icon"></i>
             <h3>SIMPLI_SHELL</h3>
-            <span class="subtitle">Intelligent Automation through SHELL CMD</span>
+            <span class="subtitle">Intelligent Automation via CMD Interface</span>
             <div class="btn-group">
                 <a href="https://github.com/Chandan250401/SimpliShell/releases/download/V.1/SIMPLISHELL_v1.txt" class="btn"><i class="fas fa-download"></i> Download</a>
-                <a href="https://github.com/Chandan250401/SimpliShell/releases/tag/V.1" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
-                <a href="https://www.youtube.com/watch?v=gU4QEdI4nT0&list=PLVsh1n3PGkq-Aaic-3MInP-sEwXj3RewR&index=4" class="btn"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SimpliShell" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="https://www.youtube.com/watch?v=gU4QEdI4nT0" class="btn"><i class="fas fa-play"></i> Watch</a>
             </div>
         </div>
-        
+
         <div class="card">
-            <i class="fas fa-file-invoice main-icon"></i>
+            <div class="repo-stars" data-repo="Chandan250401/SIMPLI_PDF"><i class="fas fa-star"></i> <span class="star-count">0</span> Stars</div>
+            <i class="fas fa-file-pdf main-icon"></i>
             <h3>SIMPLI_PDF</h3>
-            <span class="subtitle">Offline Documents Edit Made Easy</span>
+            <span class="subtitle">Next-gen Offline Document Manipulation</span>
             <div class="btn-group">
                 <a href="https://github.com/Chandan250401/SIMPLI_PDF/releases/download/v1.0.0/PDF.zip" class="btn"><i class="fas fa-download"></i> Download</a>
-                <a href="https://github.com/Chandan250401/SIMPLI_PDF/releases/tag/v1.0.0" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
-                <a href="https://www.youtube.com/watch?v=F3xT594TPEE&list=PLVsh1n3PGkq-Aaic-3MInP-sEwXj3RewR&index=2" class="btn"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SIMPLI_PDF" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="https://www.youtube.com/watch?v=F3xT594TPEE" class="btn"><i class="fas fa-play"></i> Watch</a>
             </div>
         </div>
 
         <div class="card">
+            <div class="repo-stars" data-repo="Chandan250401/SimpliAnalyzer"><i class="fas fa-star"></i> <span class="star-count">0</span> Stars</div>
             <i class="fas fa-microscope main-icon"></i>
             <h3>SIMPLI_ANALYZER</h3>
-            <span class="subtitle">Clean up hidden Data from system</span>
+            <span class="subtitle">Deep System Data Cleanup & Analysis</span>
             <div class="btn-group">
                 <a href="https://github.com/Chandan250401/SimpliAnalyzer/releases/download/v1.0/SimpliAnalyzer.zip" class="btn"><i class="fas fa-download"></i> Download</a>
-                <a href="https://github.com/Chandan250401/SimpliAnalyzer/releases/tag/v1.0" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
-                <a href="https://www.youtube.com/watch?v=K8p-p4GCxLY&list=PLVsh1n3PGkq-Aaic-3MInP-sEwXj3RewR&index=5" class="btn"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SimpliAnalyzer" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="https://www.youtube.com/watch?v=K8p-p4GCxLY" class="btn"><i class="fas fa-play"></i> Watch</a>
             </div>
         </div>
 
         <div class="card">
-            <i class="fas fa-paper-plane main-icon"></i>
+            <div class="repo-stars" data-repo="Chandan250401/SimpliMail"><i class="fas fa-star"></i> <span class="star-count">0</span> Stars</div>
+            <i class="fas fa-envelope-open-text main-icon"></i>
             <h3>SIMPLI_MAIL</h3>
-            <span class="subtitle">Gmail Handler</span>
+            <span class="subtitle">Advanced Gmail Handler & Communicator</span>
             <div class="btn-group">
                 <a href="https://github.com/Chandan250401/SimpliMail/releases/download/V.1/SimpliMail.zip" class="btn"><i class="fas fa-download"></i> Download</a>
-                <a href="https://github.com/Chandan250401/SimpliMail/releases/tag/V.1" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
-                <a href="https://www.youtube.com/watch?v=lwsMzX5KtVw&list=PLVsh1n3PGkq-Aaic-3MInP-sEwXj3RewR&index=3" class="btn"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SimpliMail" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="https://www.youtube.com/watch?v=lwsMzX5KtVw" class="btn"><i class="fas fa-play"></i> Watch</a>
             </div>
         </div>
 
         <div class="card">
-            <i class="fas fa-chart-pie main-icon"></i>
+            <div class="repo-stars" data-repo="Chandan250401/SIMPLIFIN"><i class="fas fa-star"></i> <span class="star-count">0</span> Stars</div>
+            <i class="fas fa-chart-line main-icon"></i>
             <h3>SIMPLI_FIN</h3>
-            <span class="subtitle">Your Schedule 3 Companion</span>
+            <span class="subtitle">Schedule 3 Financial Statement Companion</span>
             <div class="btn-group">
                 <a href="https://github.com/Chandan250401/SIMPLIFIN/releases/download/v.1/SimpliFin.zip" class="btn"><i class="fas fa-download"></i> Download</a>
-                <a href="https://github.com/Chandan250401/SIMPLIFIN/releases/tag/v.1" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
-                <a href="https://www.youtube.com/playlist?list=PLVsh1n3PGkq-IFJG6-ktS97d_M9hrJ05R" class="btn"><i class="fas fa-book"></i> Tutorial</a>
+                <a href="https://github.com/Chandan250401/SIMPLIFIN" class="btn btn-git"><i class="fab fa-github"></i> Git</a>
+                <a href="https://www.youtube.com/playlist?list=PLVsh1n3PGkq-IFJG6-ktS97d_M9hrJ05R" class="btn"><i class="fas fa-play"></i> Watch</a>
             </div>
         </div>
+    </div>
 
-    </div> 
+    <section class="contact-section">
+        <h3>Connect with SIMPLITIX</h3>
+        <div class="contact-container">
+            <a href="mailto:contact@simplitix.in" class="contact-item"><i class="fas fa-envelope"></i> Email Us</a>
+            <a href="https://github.com/Chandan250401/Simplitix.in/issues" class="contact-item"><i class="fas fa-tools"></i> Request Tool</a>
+        </div>
+    </section>
 
-    <footer style="text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.8rem; padding-bottom: 2rem;">
-        &copy; 2026 SIMPLITIX Ecosystem. All rights reserved.
-    </footer>
+    <footer>&copy; 2026 SIMPLITIX Ecosystem. Precision tools for a complex world.</footer>
 
+    <script>
+        // THEME TOGGLE
+        const modeBtn = document.getElementById('modeBtn');
+        const body = document.body;
+        modeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const icon = modeBtn.querySelector('i');
+            const span = modeBtn.querySelector('span');
+            if (body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun'; span.innerText = 'Light Mode';
+            } else {
+                icon.className = 'fas fa-moon'; span.innerText = 'Dark Mode';
+            }
+        });
+
+        // LIVE GITHUB STAR FETCHING
+        async function fetchGitHubStars() {
+            const starContainers = document.querySelectorAll('.repo-stars');
+            starContainers.forEach(async (container) => {
+                const repo = container.getAttribute('data-repo');
+                const countSpan = container.querySelector('.star-count');
+                try {
+                    const response = await fetch(`https://api.github.com/repos/${repo}`);
+                    const data = await response.json();
+                    if (data.stargazers_count !== undefined) {
+                        countSpan.innerText = data.stargazers_count;
+                    }
+                } catch (error) { console.error("Error fetching stars", error); }
+            });
+        }
+        window.addEventListener('DOMContentLoaded', fetchGitHubStars);
+    </script>
 </body>
 </html>
